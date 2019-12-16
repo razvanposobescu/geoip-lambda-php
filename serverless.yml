@@ -1,0 +1,23 @@
+service: geoip
+
+package:
+  exclude:
+    - geoip-layer/**
+
+provider:
+  name: aws
+  region: sa-east-1
+  runtime: provided
+  stage: prod
+  memorySize: 1024
+  timeout: 30
+
+plugins:
+  - ./vendor/bref/bref
+
+functions:
+  get-location:
+    handler: index.php
+    layers:
+      - ${bref:layer.php-73}
+      - 'arn:aws:lambda:sa-east-1:391960246434:layer:geoip:2'

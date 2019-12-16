@@ -1,0 +1,15 @@
+{
+  "require": {
+    "bref/bref": "^0.5.11",
+    "geoip2/geoip2": "^2.10"
+  },
+  "scripts": {
+    "deploy": [
+      "composer install --optimize-autoloader --no-dev",
+      "serverless deploy"
+    ],
+    "remove": [
+      "serverless remove"
+    ]
+  }
+}
